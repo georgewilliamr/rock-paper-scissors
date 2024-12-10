@@ -1,23 +1,37 @@
-//Computer choice for Rock, Paper, Scissors
+'use strict';
 
-function getComputerChoice(max) {
-    const choice = Math.floor(Math.random() * max);
-    
-    
-    if (choice === 0) {
-        return "Rock";
-    } else if (choice === 1) {
-        return "Paper";
-    } else if (choice === 2) {
-        return "Scissors";
-    }  
+// 1. Computer then needs to randomly select its choice using math.random 
+// 2. Human gives choice 
+// 3. Use if / else statements to determine who is winner. 
+
+
+
+
+const getRandomChoice = function() {
+    const randomInt = Math.floor(Math.random() * 3);
+  
+  if (randomInt === 0){
+    return "rock";
+  } else if (randomInt === 1){
+    return "paper";
+  } else {
+    return "scissors";
+  }
 
 }
-  
-console.log(getComputerChoice(3)); 
-  
-// Human Choice for Rock, Paper, Scissors
+console.log(getRandomChoice());
 
 
+const getHumanChoice = function() {
+    const choice = prompt("Enter your choice: Rock, Paper, or Scissors?").toLowerCase();
+    
+    if (choice === "rock" || choice === "paper" || choice === "scissors"){
+        return choice;
+    } else {
+        console.log("Invalid choice, Please enter Rock, Paper, or Scissors.");
+        return getHumanChoice();
+    }
+}
 
-
+const humanChoice = getHumanChoice();
+console.log(`You chose: ${humanChoice}`);
